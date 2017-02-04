@@ -7,9 +7,10 @@
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use yii\captcha\Captcha;
+use voime\GoogleMaps\Map;
 
 $this->title = 'Contact';
-$this->params['breadcrumbs'][] = $this->title;
+
 ?>
 
 <div class="content-wrapper">
@@ -51,7 +52,17 @@ $this->params['breadcrumbs'][] = $this->title;
                     </div> <!-- /.col-md-7 -->
                     <div class="col-md-5">
                         <div class="googlemap-wrapper">
-                            <div id="map_canvas" class="map-canvas"></div>
+                            <div id="map_canvas" class="map-canvas">
+                                <?=Map::widget([
+                                    'zoom' => 17,
+                                    'center' => [50.45651359, 30.39544165],
+                                    'mapType' => Map::MAP_TYPE_ROADMAP,
+                                    'markers' => [
+                                        ['position' => [50.45651359, 30.39544165]],
+                                    ],
+                                    // 'markerFitBounds'=>true
+                                ])?>
+                            </div>
                         </div>
                     </div> <!-- /.col-md-5 -->
                 </div> <!-- /.row -->
@@ -60,25 +71,4 @@ $this->params['breadcrumbs'][] = $this->title;
     </div> <!-- /.inner-content -->
 </div> <!-- /.content-wrapper -->
 
-<!-- Google Map -->
-<script src="http://maps.google.com/maps/api/js?sensor=true"></script>
-<script src="js/vendor/jquery.gmap3.min.js"></script>
-
-<!-- Google Map Init-->
-<script type="text/javascript">
-    jQuery(function($){
-        $('#map_canvas').gmap3({
-            marker:{
-                address: '40.717599,-74.005136'
-            },
-            map:{
-                options:{
-                    zoom: 17,
-                    scrollwheel: false,
-                    streetViewControl : true
-                }
-            }
-        });
-    });
-</script>
 

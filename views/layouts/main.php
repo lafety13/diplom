@@ -142,16 +142,15 @@ AppAsset::register($this);
 
 </div>
 
-
 <?php
     $script = <<< JS
-        $(window).load(function() { // makes sure the whole site is loaded
-            $('.loader-item').fadeOut(); // will first fade out the loading animation
-            $('#pageloader').delay(350).fadeOut('slow'); // will fade out the white DIV that covers the website.
+        $(window).load(function() { 
+            $('.loader-item').fadeOut(); 
+            $('#pageloader').delay(350).fadeOut('slow'); 
             $('body').delay(350).css({'overflow-y':'visible'});
         })
 JS;
-    $this->registerJsFile('js/vendor/jquery-1.11.0.min.js',  ['position' => yii\web\View::POS_END]);
+  //  $this->registerJsFile('js/vendor/jquery-1.11.0.min.js',  ['position' => yii\web\View::POS_END]);
     $this->registerJs($script, yii\web\View::POS_END);
 ?>
 
