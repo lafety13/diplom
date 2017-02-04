@@ -4,50 +4,46 @@
 
 $this->title = 'My Yii Application';
 ?>
-<div class="site-index">
 
-    <div class="jumbotron">
-        <h1>Congratulations!</h1>
 
-        <p class="lead">You have successfully created your Yii-powered application.</p>
+<div class="swiper-container">
+    <div class="swiper-wrapper">
 
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
-    </div>
+        <div class="swiper-slide" style="background-image: url(images/slide1.jpg);">
+            <div class="overlay-s"></div>
+            <div class="slider-caption">
+                <div class="inner-content">
+                    <h2>Earth New House Project</h2>
+                    <p>Artcore is free HTML5 template by <b class="blue">template</b><b class="green">mo</b>. Credit goes to <a rel="nofollow" href="http://unsplash.com">Unsplash</a> for photos.</p>
+                    <a href="#" class="main-btn white">View Projects</a>
+                </div> <!-- /.inner-content -->
+            </div> <!-- /.slider-caption -->
+        </div> <!-- /.swier-slide -->
 
-    <div class="body-content">
+        <div class="swiper-slide" style="background-image: url(images/slide2.jpg);">
+            <div class="overlay-s"></div>
+            <div class="slider-caption">
+                <div class="inner-content">
+                    <h2>Hotel and Residence Concept in Montenegro</h2>
+                    <p>We come with new fresh and unique ideas.</p>
+                    <a href="#" class="main-btn white">View Projects</a>
+                </div> <!-- /.inner-content -->
+            </div> <!-- /.slider-caption -->
+        </div> <!-- /.swier-slide -->
 
-        <div class="row">
-            <div class="col-lg-4">
-                <h2>Heading</h2>
+        <div class="swiper-slide" style="background-image: url(images/slide3.jpg);">
+            <div class="overlay-s"></div>
+            <div class="slider-caption">
+                <div class="inner-content">
+                    <h2>Natural 3d Architecture Design</h2>
+                    <p>Natural concrete is a material which is calm and clean.</p>
+                    <a href="#" class="main-btn white">View Projects</a>
+                </div> <!-- /.inner-content -->
+            </div> <!-- /.slider-caption -->
+        </div> <!-- /.swier-slide -->
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
+    </div> <!-- /.swiper-wrapper -->
+</div> <!-- /.swiper-container -->
 
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
 
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
-            </div>
-        </div>
-
-    </div>
-</div>
