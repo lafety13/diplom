@@ -1,3 +1,7 @@
+
+curl -s http://getcomposer.org/installer | php
+php composer.phar self-update
+
 Yii 2 Basic Project Template
 ============================
 
