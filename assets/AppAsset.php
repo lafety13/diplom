@@ -21,7 +21,7 @@ class AppAsset extends AssetBundle
         'css/font-awesome.css',
         'css/animate.css',
         'css/templatemo-misc.css',
-        'css/templatemo-style.css',
+        'css/templatemo-style.css'
     ];
     public $js = [
         'js/plugins.js',

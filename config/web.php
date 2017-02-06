@@ -23,7 +23,6 @@ $config = [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-
        'mailer' => [
           'class' => 'yii\swiftmailer\Mailer',
             'viewPath' => '@app/mail',
@@ -38,7 +37,6 @@ $config = [
                 'encryption' => 'tls',
             ],
         ],
-
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [

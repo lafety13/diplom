@@ -5,8 +5,10 @@
 
 use yii\helpers\Html;
 use app\assets\AppAsset;
+use app\assets\FontAsset;
 
 AppAsset::register($this);
+FontAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -22,8 +24,12 @@ AppAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
 
+
 <div class="wrap">
 
+    <section id="pageloader">
+        <div class="loader-item fa fa-spin colored-border"></div>
+    </section> <!-- /#pageloader -->
 
     <header class="site-header container-fluid">
         <div class="top-header">
