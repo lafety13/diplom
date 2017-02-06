@@ -10,17 +10,15 @@ use yii\helpers\Html;
     <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=<?= Yii::$app->charset ?>" />
-        <style type="text/css">
-            .heading {...}
-            .list {...}
-            .footer {...}
-        </style>
+        <title><?= Html::encode($this->title) ?></title>
         <?php $this->head() ?>
     </head>
-    <body>
+    <p>
     <?php $this->beginBody() ?>
+
+    <h4>From: <?= $this->params['userName'] ?></h4>
     <?= $content ?>
-    <div class="footer">With kind regards, <?= Yii::$app->name ?> team</div>
+
     <?php $this->endBody() ?>
     </body>
     </html>

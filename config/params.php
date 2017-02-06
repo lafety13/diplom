@@ -2,5 +2,6 @@
 
 return [
     'GOOGLE_API_KEY' => 'AIzaSyDCghlJirafplMFqfGPRCwcJLnsgKnd4Sg',
-    'adminEmail' => 'admin@example.com',
+    'adminEmail' => 'koozyy13@gmail.com',
+    'emailto' => 'koozyy13@gmail.com',
 ];

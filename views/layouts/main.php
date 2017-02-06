@@ -4,19 +4,14 @@
 /* @var $content string */
 
 use yii\helpers\Html;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
-use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="<?= Yii::$app->language ?>"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang="<?= Yii::$app->language ?>"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9" lang="<?= Yii::$app->language ?>"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="<?= Yii::$app->language ?>"> <!--<![endif]-->
+
+<html lang="<?= Yii::$app->language ?>">
 <head>
     <meta charset="<?= Yii::$app->charset ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,9 +23,7 @@ AppAsset::register($this);
 <?php $this->beginBody() ?>
 
 <div class="wrap">
-    <section id="pageloader">
-        <div class="loader-item fa fa-spin colored-border"></div>
-    </section> <!-- /#pageloader -->
+
 
     <header class="site-header container-fluid">
         <div class="top-header">
@@ -62,8 +55,13 @@ AppAsset::register($this);
                             </form>
                         </div>
                     </div><!-- #search-overlay -->
-                    <a href="#" class="btn-left arrow-left fa fa-angle-left"></a>
-                    <a href="#" class="btn-left arrow-right fa fa-angle-right"></a>
+
+                    <?php if ((Yii::$app->getHomeUrl() === Yii::$app->request->url) ||
+                            (trim(Yii::$app->getUrlManager()->baseUrl, "/") === trim(Yii::$app->request->url, "/"))): ?>
+                        <a href="#" class="btn-left arrow-left fa fa-angle-left"></a>
+                        <a href="#" class="btn-left arrow-right fa fa-angle-right"></a>
+                    <?php endif; ?>
+
                 </div> <!-- /.main-header-left -->
                 <div class="menu-wrapper col-md-9 col-sm-6 col-xs-4">
                     <a href="#" class="toggle-menu visible-sm visible-xs"><i class="fa fa-bars"></i></a>
@@ -106,37 +104,6 @@ AppAsset::register($this);
             </ul>
         </div>
     </header> <!-- /.site-header -->
-    <?php
-    /*NavBar::begin([
-        'brandLabel' => 'My Company',
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
-        ],
-    ]);
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
-            Yii::$app->user->isGuest ? (
-                ['label' => 'Login', 'url' => ['/site/login']]
-            ) : (
-                '<li>'
-                . Html::beginForm(['/site/logout'], 'post')
-                . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
-                    ['class' => 'btn btn-link logout']
-                )
-                . Html::endForm()
-                . '</li>'
-            )
-        ],
-    ]);
-    NavBar::end();*/
-    ?>
-
 
     <?= $content ?>
 
@@ -144,13 +111,20 @@ AppAsset::register($this);
 
 <?php
     $script = <<< JS
+        window.jQuery || document.write('<script src="js/vendor/jquery-1.11.0.min.js"><\/script>');
+JS;
+    $this->registerJs($script, yii\web\View::POS_END);
+
+    $script = <<< JS
         $(window).load(function() { 
             $('.loader-item').fadeOut(); 
             $('#pageloader').delay(350).fadeOut('slow'); 
             $('body').delay(350).css({'overflow-y':'visible'});
         })
 JS;
+
   //  $this->registerJsFile('js/vendor/jquery-1.11.0.min.js',  ['position' => yii\web\View::POS_END]);
+    $this->registerJsFile('js/vendor/modernizr-2.6.1-respond-1.1.0.min.js',  ['position' => yii\web\View::POS_HEAD]);
     $this->registerJs($script, yii\web\View::POS_END);
 ?>
 
