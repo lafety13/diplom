@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Blog;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -122,4 +123,19 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
+
+    public function actionBlog()
+    {
+        $articles = Blog::getAllArticles();
+        return $this->render('blog', ['articles' => $articles]);
+    }
+
+    public function actionArticle($id)
+    {
+        $article = Blog::getArticleById($id);
+
+
+        return $this->render('article', ['article' => $article]);
+    }
+
 }

@@ -9,23 +9,27 @@
                 </div> <!-- /.row -->
                 <div class="row">
                     <div class="blog-masonry masonry-true">
+
+                        <?php foreach ($articles as $article): ?>
                         <div class="post-masonry col-md-4 col-sm-6">
                             <div class="blog-thumb">
-                                <img src="images/blog/blog-1.jpg" alt="">
+                                <img src="images/blog/<?=$article['image']?>" alt="">
                                 <div class="overlay-b">
                                     <div class="overlay-inner">
-                                        <a href="blog-single.html" class="fa fa-link"></a>
+                                        <a href="<?=Yii::$app->getUrlManager()->createUrl(['site/article', 'id' => $article['id']])?>" class="fa fa-link"></a>
                                     </div>
                                 </div>
                             </div>
                             <div class="blog-body">
                                 <div class="box-content">
-                                    <h3 class="post-title"><a href="blog-single.html">Keep Your Stuff Alive</a></h3>
-                                    <span class="blog-meta">10 November 2084 by Tawana</span>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, deleniti, id quibusdam aut optio saepe soluta tempore neque voluptatum.</p>
+                                    <h3 class="post-title"><a href="<?=Yii::$app->getUrlManager()->createUrl(['site/article', 'id' => $article['id']])?>"><?=$article['title']?></a></h3>
+                                    <span class="blog-meta"><?=$article['date']?></span>
+                                    <p><?=$article['short_description']?></p>
                                 </div>
                             </div>
                         </div> <!-- /.post-masonry -->
+                        <?php endforeach;?>
+
                         <div class="post-masonry col-md-4 col-sm-6">
                             <div class="blog-thumb">
                                 <img src="images/blog/blog-2.jpg" alt="">
@@ -39,7 +43,7 @@
                                 <div class="box-content">
                                     <h3 class="post-title"><a href="blog-single.html">Brigette Brown on Umbrellas</a></h3>
                                     <span class="blog-meta">8 November 2084 by Christina</span>
-                                    <p><a href="http://www.templatemo.com/preview/templatemo_423_artcore">Artcore</a> is free HTML5 template by <b class="blue">template</b><b class="green">mo</b>. There are total 12 HTML pages. Credit goes to <a rel="nofollow" href="http://unsplash.com">Unsplash</a> for images.</p>
+                                    <p><a href="http://www.templatemo.com/preview/templatemo_423_artcore">Artcore</a> is free HTML5 template by is free HTML5 template by is free HTML5 template by is free HTML5 template by is free HTML5 template by is free HTML5 template by is free HTML5 template by is free HTML5 template by is free HTML5 template by is free HTML5 template by is free HTML5 template by is free HTML5 template by is free HTML5 template by is free HTML5 template by is free HTML5 template by is free HTML5 template by is free HTML5 template by <b class="blue">template</b><b class="green">mo</b>. There are total 12 HTML pages. Credit goes to <a rel="nofollow" href="http://unsplash.com">Unsplash</a> for images.</p>
                                 </div>
                             </div>
                         </div> <!-- /.post-masonry -->
