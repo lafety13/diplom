@@ -74,7 +74,7 @@ FontAsset::register($this);
                     <ul class="sf-menu hidden-xs hidden-sm">
                         <li class="active"><a href="<?=Yii::$app->getHomeUrl(); ?>">Home</a></li>
                         <li><a href="#">Booking</a></li>
-                        <li><a href="#">Blog</a></li>
+                        <li><a href="<?=Yii::$app->getUrlManager()->createUrl(['site/blog'])?>">Blog</a></li>
                         <li><a href="#">Pages</a></li>
                         <li><a href="<?=Yii::$app->getUrlManager()->createUrl(['site/contact']); ?>">Contact</a></li>
                     </ul>
