@@ -27,11 +27,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <?php Pjax::begin(['options'=>['class'=>'nav-tabs-custom']]); ?>
         <?php  $content = '<p>'?>
-        <?php  $content.= ' '.Html::a('激活', "javascript:void(0);", ['class' => 'btn btn-xs btn-success batch-active']) ?>
-        <?php  $content.= ' '.Html::a('取消激活', "javascript:void(0);", ['class' => 'btn btn-xs btn-success batch-inactive']) ?>
-        <?php  $content.= ' '.Html::a('封号', "javascript:void(0);", ['class' => 'btn btn-xs btn-primary batch-banned']) ?>
-        <?php  $content.= ' '.Html::a('取消封号', "javascript:void(0);", ['class' => 'btn btn-xs btn-primary batch-unbanned']) ?>
-        <?php  $content.= ' '.Html::a('删除', "javascript:void(0);", ['class' => 'btn btn-xs btn-danger batchdelete']) ?>
+        <?php  $content.= ' '.Html::a('Activation', "javascript:void(0);", ['class' => 'btn btn-xs btn-success batch-active']) ?>
+        <?php  $content.= ' '.Html::a('Deactivate', "javascript:void(0);", ['class' => 'btn btn-xs btn-success batch-inactive']) ?>
+        <?php  $content.= ' '.Html::a('Title', "javascript:void(0);", ['class' => 'btn btn-xs btn-primary batch-banned']) ?>
+        <?php  $content.= ' '.Html::a('Cancel the title', "javascript:void(0);", ['class' => 'btn btn-xs btn-primary batch-unbanned']) ?>
+        <?php  $content.= ' '.Html::a('Delete', "javascript:void(0);", ['class' => 'btn btn-xs btn-danger batchdelete']) ?>
         <?php  $content.= '</p>'?>
         <?php  $content.= GridView::widget([
             'dataProvider' => $dataProvider,
@@ -54,7 +54,8 @@ $this->params['breadcrumbs'][] = $this->title;
                     'attribute' => 'username',
                     'format'=>'raw',
                     'value' => function($model)use($controller){
-                        return $model->username.($model->id == $controller->superadmin_uid ? "<span data-toggle='tooltip' data-original-title='超级管理员' class='label label-success'>超</span>" :"");
+                        return $model->username.($model->id == $controller->superadmin_uid ?
+                                "<span data-toggle='tooltip' data-original-title='Super administrator' class='label label-success'>Ultra</span>" :"");
                     },
                     'filterOptions'=>['style'=>'width:100px']
                 ],
@@ -89,14 +90,14 @@ $this->params['breadcrumbs'][] = $this->title;
                     'options'=>['style'=>'width:80px']
                 ],
                 [
-                    'label'=>'激活',
+                    'label'=>'Activation',
                     'class' => EditableColumn::className(),
                     'url' => ['change-status'],
                     'type' => 'select',
                     'editableOptions' => function ($model) use($user,$controller){
                         if($model->id == $controller->superadmin_uid)return false;
                         $source = $user::statusDropdown();
-                        krsort($source);//如果不倒序排列,source序列化会变成数组而不是对象
+                        krsort($source);
                         return [
                             'source' => $source,
                             'value' => $model->status,
@@ -112,11 +113,11 @@ $this->params['breadcrumbs'][] = $this->title;
                     'options'=>['style'=>'width:80px']
                 ],
                 [
-                    'label'=>'禁用',
+                    'label'=>'Disabled',
                     'attribute'=>'banned_at',
                     'filter'=>'',
                     'value'=>function($model){
-                        return $model->banned_at ? "禁用" : "正常";
+                        return $model->banned_at ? "Disabled" : "Normal";
                     },
                     'options'=>['style'=>'width:80px']
                 ],
@@ -140,12 +141,12 @@ $this->params['breadcrumbs'][] = $this->title;
         <?=  Tabs::widget([
             'items' => [
                 [
-                    'label' =>  "用户管理",
+                    'label' =>  "User Management",
                     'content'=> $content,
                     'active' => true
                 ],
                 [
-                    'label' => '添加用户',
+                    'label' => 'Add user',
                     'url'=>['create'],
                 ]
             ],
@@ -158,7 +159,7 @@ $this->registerJs('
 function oa_action(action,status,tips){
     var keys = $("#grid").yiiGridView("getSelectedRows");
     if(keys.length==0){
-        noty({text: "请至少选择一条数据!",type:\'warning\'});
+        noty({text: "Please select at least one piece of data!",type:\'warning\'});
         return ;
     }
     if(tips == ""){
@@ -196,7 +197,7 @@ function oa_action(action,status,tips){
     }
 }
 $(".batchdelete").on("click", function () {
-    oa_action("/user/admin/deletes",1,"确定要删除?");
+    oa_action("/user/admin/deletes",1,"Be sure to delete?");
 });
 $(".batch-active").on("click", function () {
     oa_action("/user/admin/active",1,"");

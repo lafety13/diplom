@@ -12,7 +12,6 @@ class SystemEvent extends Component
 
     static public function beforeRequest()
     {
-        //去掉pathInfo最后面的斜线:blog/=> blog,有斜线,urlRule无法正常匹配
         $length = strlen(Yii::$app->request->pathInfo);
         if($length>0){
             if('/' === Yii::$app->request->pathInfo[$length-1]){
@@ -40,9 +39,9 @@ class SystemEvent extends Component
     }
 
     /**
-     * 获取菜单项,并且通过权限过滤
-     * @param $key system_config的cfg_key
-     * @param $pid system_config的id
+     *
+     * @param $key system_config cfg_key
+     * @param $pid system_config id
      */
     static public function GetCanAccessMenu($key,$pid)
     {
@@ -52,7 +51,7 @@ class SystemEvent extends Component
                 try{
                     $value = Json::decode($menu['cfg_value'],true);
                     $type  = isset($value['type']) ? $value['type'] : 1;
-                    if(isset($value['url'])){//必须要有url字段
+                    if(isset($value['url'])){
                         if($type==1 && !static::CheckAccessMenu($value['url'])){
                             unset($menus[$k]);
                         }
@@ -89,16 +88,14 @@ class SystemEvent extends Component
     }
 
 
-    //获取Admin菜单
     static public function GetAdminMenu(){
-        //默认获取全部的菜单
         $menus  = static::GetCanAccessMenu(SystemConfig::MENU_KEY,'');
 
         return  static::FortmatMenus($menus);
     }
 
     /**
-     * 通过url获取route,通过rule解析得到
+     * url route,rule
      */
     static public function GetRouteFromUrl($url)
     {
@@ -135,7 +132,7 @@ class SystemEvent extends Component
 //                    $controller = !empty($array[2]) ? $array[2] : null;
 //                    $action     = !empty($array[3]) ? $array[3] : null;
 //
-//                    //fixed 中间冒号的方式进入文件夹
+//                    //fixed
 //                    $plugin = str_replace(":","/",$plugin);
 //                    if($module == 'plugin'){
 //                        if($action == null){
@@ -150,9 +147,6 @@ class SystemEvent extends Component
         return ['action'=>$action,'controller'=>$controller,'module'=>$module,'plugin'=>$plugin];
     }
 
-    /**
-     * 判断菜单的权限
-     */
     static public function CheckAccessMenu($url)
     {
         if($url == "#"){

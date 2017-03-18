@@ -207,7 +207,6 @@ class RouteModel extends Object
                     continue;
                 }
                 if (is_dir($path . '/' . $file) && preg_match('%^[a-z0-9_/]+$%i', $file . '/')) {
-                    //判断如果是plugin的namespace,就去掉路径里面的controllers,就是$file
                     if($module->id == 'plugin' && $file == 'controllers'){
                         $this->getControllerFiles($module, $namespace . $file . '\\', $prefix , $result);
                     }else{
@@ -249,7 +248,7 @@ class RouteModel extends Object
             $controller = Yii::createObject($type, [$id, $module]);
             $this->getActionRoutes($controller, $result);
             $all = "/{$controller->uniqueId}/*";
-            $all = str_replace("//","/",$all);//去掉重复的//
+            $all = str_replace("//","/",$all);
             $result[$all] = $all;
         } catch (\Exception $exc) {
             Yii::error($exc->getMessage(), __METHOD__);
@@ -280,7 +279,7 @@ class RouteModel extends Object
                 if ($method->isPublic() && !$method->isStatic() && strpos($name, 'action') === 0 && $name !== 'actions') {
                     $name = strtolower(preg_replace('/(?<![A-Z])[A-Z]/', ' \0', substr($name, 6)));
                     $id = $prefix . ltrim(str_replace(' ', '-', $name), '-');
-                    $id = str_replace("//","/",$id);//去掉重复的//
+                    $id = str_replace("//","/",$id);
                     $result[$id] = $id;
                 }
             }

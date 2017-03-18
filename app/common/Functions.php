@@ -38,7 +38,7 @@ class Functions
                             $items[$v['cfg_pid']]['items'][$v['id']] = static::formatItem($v);
                         }
                     }else{
-                        $items[$v['id']] = static::formatItem($v); //cfg_pid 不正确的情况
+                        $items[$v['id']] = static::formatItem($v); //cfg_pid
                     }
                 }
             }

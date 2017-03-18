@@ -10,15 +10,16 @@ use yii\widgets\Breadcrumbs;
 
     </div>
 </div>
+
 <!-- /.content-wrapper -->
 <div class="contextMenu" id="tabmenu" style="display: none">
     <ul>
-        <li id="refresh">刷新</li>
-        <li id="closeSelf">关闭本页</li>
-        <li id="closeAll">关闭全部</li>
-        <li id="closeOther">关闭其他</li>
-        <li id="closeLeft">关闭左边</li>
-        <li id="closeRight">关闭右边</li>
-        <li id="cancel">取消</li>
+        <li id="refresh">refresh</li>
+        <li id="closeSelf">closeSelf</li>
+        <li id="closeAll">closeAll</li>
+        <li id="closeOther">closeOther</li>
+        <li id="closeLeft">closeLeft</li>
+        <li id="closeRight">closeRight</li>
+        <li id="cancel">cancel</li>
     </ul>
 </div>

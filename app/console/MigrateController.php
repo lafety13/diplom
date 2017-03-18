@@ -33,7 +33,7 @@ class MigrateController extends BaseMigrateController
     public $migrationTable = '{{%migration}}';
 
     /**
-     * @var string 默认路径
+     * @var string
      */
     public $defaultMigrationPath = '@app/migrations';
 
@@ -50,10 +50,10 @@ class MigrateController extends BaseMigrateController
     protected $_plugin_migration_paths = [];
 
     /**
-     * 如果 migrationPath 有值,则说明yii migrate --migrationPath=$path,通过传参运行
-     * migrationPath 没有传参,则使用默认的 defaultMigrationPath 和 plugin的migrations
+     *  migrationPath yii migrate --migrationPath=$path,
+     * migrationPath defaultMigrationPath  plugin migrations
      *
-     * 此method需要放在beforeAction里面,此时migrationPath已经被赋值。
+     * method beforeAction migrationPath
      */
     public function generateMigrationPath()
     {
@@ -63,14 +63,11 @@ class MigrateController extends BaseMigrateController
             if(is_dir($path)){
                 $this->_plugin_migration_paths[] = $path;
             }else{
-                //报错,退出
                 throw new InvalidConfigException("Migration failed. Directory specified in migrationPath doesn't exist: {$this->migrationPath}");
             }
 
         }else{
-            //如果system config被migrate/down 删除了,会报错,通过try catch 过滤掉
             try {
-                //自动把插件的migrations path加入到搜索路径
                 $setupedPlugins = PluginManager::GetSetupedPlugins();
                 if ($setupedPlugins && is_array($setupedPlugins)){
                     foreach ($setupedPlugins as $plugin) {
@@ -82,16 +79,14 @@ class MigrateController extends BaseMigrateController
                     }
                 }
             }catch (yii\base\Exception $e){
-                //不影响
+
             }
-            $this->migrationPath = $this->defaultMigrationPath;//如果不赋值,basemigratecontroller会报错
-            //默认的migrationPath
+            $this->migrationPath = $this->defaultMigrationPath;
             $path = Yii::getAlias($this->migrationPath);
             if(is_dir($path)){
                 $this->_plugin_migration_paths[] = $path;
             }
         }
-        //添加path到include path
         if(count($this->_plugin_migration_paths)>0){
             $need_include_paths = join(PATH_SEPARATOR,$this->_plugin_migration_paths);
             set_include_path(get_include_path() . PATH_SEPARATOR . $need_include_paths);
@@ -107,7 +102,6 @@ class MigrateController extends BaseMigrateController
         return parent::beforeAction($action);
     }
 
-    //重构
     protected function createMigration($class)
     {
         $class = trim($class, '\\');
@@ -119,7 +113,6 @@ class MigrateController extends BaseMigrateController
         return new $class();
     }
 
-    //重构
     protected function getNewMigrations()
     {
         $applied = [];
@@ -128,7 +121,6 @@ class MigrateController extends BaseMigrateController
         }
 
         $migrationPaths = [];
-        //把plugins的加进来
         foreach ($this->_plugin_migration_paths as $_path){
             $migrationPaths[] = $_path;
         }
@@ -150,7 +142,6 @@ class MigrateController extends BaseMigrateController
                 $path = $migrationPath . DIRECTORY_SEPARATOR . $file;
                 if (preg_match('/^(m(\d{6}_?\d{6})\D.*?)\.php$/is', $file, $matches) && is_file($path)) {
                     $class = $matches[1];
-                    //增加判断,如果namespace是数字,代表添加的全局的plugin的migrations
                     if (!empty($namespace) && !is_numeric($namespace)) {
                         $class = $namespace . '\\' . $class;
                     }

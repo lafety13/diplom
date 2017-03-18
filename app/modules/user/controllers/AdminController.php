@@ -35,7 +35,7 @@ class AdminController extends Controller
     public function init()
     {
         parent::init();
-        $this->protected_uids[] = $this->superadmin_uid;//把superadmin 默认加入受保护的列表
+        $this->protected_uids[] = $this->superadmin_uid;//superadmin
         $this->attachBehaviors([
             'access' => [
                 'class' => AccessControl::className(),
@@ -219,7 +219,6 @@ class AdminController extends Controller
         if ($userLoaded && $user->validate() && $profile->validate()) {
             $user->save(false);
             $profile->setUser($user->id)->save(false);
-            //更新授权
             Yii::$app->authManager->assign(Yii::$app->authManager->getRole($user->role->name), $user->id);
             return $this->redirect(['index']);
         }
@@ -255,9 +254,9 @@ class AdminController extends Controller
         if ($userLoaded && $user->validate() && $profile->validate()) {
             $user->save(false);
             $profile->setUser($user->id)->save(false);
-            //删除授权
+            //Delete authorization
             Yii::$app->authManager->revoke(Yii::$app->authManager->getRole($old_role->name), $user->id);
-            //更新授权
+            //Update authorization
             Yii::$app->authManager->assign(Yii::$app->authManager->getRole($user->role->name), $user->id);
             return $this->redirect(['index']);
         }
@@ -285,7 +284,7 @@ class AdminController extends Controller
         UserAuth::deleteAll(['user_id' => $user->id]);
         $profile->delete();
         $user->delete();
-        //删除授权
+        //Delete authorization
         Yii::$app->authManager->revoke(Yii::$app->authManager->getRole($user->role->name), $user->id);
         Yii::$app->session->setFlash("success","删除完成");
         return $this->redirect(['index']);
@@ -303,7 +302,7 @@ class AdminController extends Controller
             UserAuth::deleteAll(['user_id' => $user->id]);
             $profile->delete();
             $user->delete();
-            //删除授权
+            //Delete authorization
             Yii::$app->authManager->revoke(Yii::$app->authManager->getRole($user->role->name), $user->id);
             return true;
         }
@@ -327,15 +326,15 @@ class AdminController extends Controller
                 }
             }
             $result['data'] = $data;
-            $result['msg']  = '删除完成!';
+            $result['msg']  = 'Delete is complete!';
             if($protected_uids_num>0 && count($post['ids'])==$protected_uids_num){
-                $result=['code'=>0,'msg'=>'受保护的账号,不允许删除!'];
+                $result=['code'=>0,'msg'=>'Protected account, not allowed to delete!'];
             }else if($protected_uids_num>0 && $protected_uids_num<count($post['ids'])){
-                $result=['code'=>200,'msg'=>'删除完成,其中受保护的账号,不允许删除!'];
+                $result=['code'=>200,'msg'=>'Delete complete, which protected account, not allowed to delete!'];
             }
 
         }else{
-            $result=['code'=>0,'msg'=>'请选择要删除的用户!'];
+            $result=['code'=>0,'msg'=>'Please select the user you want to delete!'];
         }
 
         if (Yii::$app->request->isAjax) {
@@ -364,15 +363,15 @@ class AdminController extends Controller
                 }
             }
             $result['data'] = $data;
-            $result['msg']  = '操作完成!';
+            $result['msg']  = 'Operation is complete!';
             if($protected_uids_num>0 && count($post['ids'])==$protected_uids_num){
-                $result=['code'=>0,'msg'=>'受保护的账号,不允许改变激活状态!'];
+                $result=['code'=>0,'msg'=>'Protected account, not allowed to change the activation state!'];
             }else if($protected_uids_num>0 && $protected_uids_num<count($post['ids'])){
-                $result=['code'=>200,'msg'=>'操作完成,其中受保护的账号,不允许改变激活状态!'];
+                $result=['code'=>200,'msg'=>'Operation is completed, which protected account, not allowed to change the activation state!'];
             }
 
         }else{
-            $result=['code'=>0,'msg'=>'请选择要操作的数据!'];
+            $result=['code'=>0,'msg'=>'Please select the data to be operated!'];
         }
 
         if (Yii::$app->request->isAjax) {
@@ -400,22 +399,22 @@ class AdminController extends Controller
                         $user->banned_reason = "";
                     }else{
                         $user->banned_at     = date("Y-m-d H:i:s");
-                        $user->banned_reason = "管理员ID=".Yii::$app->user->id."操作";
+                        $user->banned_reason = "Administrator ID=".Yii::$app->user->id."operating";
                     }
                     $user->save();
                     $data[] = $id;
                 }
             }
             $result['data'] = $data;
-            $result['msg']  = '操作完成!';
+            $result['msg']  = 'Operation is complete!';
             if($protected_uids_num>0 && count($post['ids'])==$protected_uids_num){
-                $result=['code'=>0,'msg'=>'受保护的账号,不允许禁用!'];
+                $result=['code'=>0,'msg'=>'Protected account, not allowed to disable!'];
             }else if($protected_uids_num>0 && $protected_uids_num<count($post['ids'])){
-                $result=['code'=>200,'msg'=>'操作完成,其中受保护的账号,不允许禁用!'];
+                $result=['code'=>200,'msg'=>'Operation is completed, which protected account, not allowed to disable!'];
             }
 
         }else{
-            $result=['code'=>0,'msg'=>'请选择要操作的数据!'];
+            $result=['code'=>0,'msg'=>'Please select the data to be operated!'];
         }
 
         if (Yii::$app->request->isAjax) {

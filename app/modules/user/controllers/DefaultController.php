@@ -59,7 +59,6 @@ class DefaultController extends Controller
         if(in_array($action->id,$loginedActions)){
             $this->layout = '/main';
         }
-        //要返回true 往下执行
         return parent::beforeAction($action);
     }
 
@@ -232,7 +231,6 @@ class DefaultController extends Controller
                 $role = $this->module->model("Role");
                 $user->setRegisterAttributes($role::ROLE_USER)->save();
                 $profile->setUser($user->id)->save();
-                //添加权限分配
                 Yii::$app->getAuthManager()->assign(Yii::$app->getAuthManager()->getRole('User'),$user->id);
                 $this->afterRegister($user);
 
@@ -243,7 +241,6 @@ class DefaultController extends Controller
                 if (Yii::$app->user->isGuest) {
                     $guestText = Yii::t("user", " - Please check your email to confirm your account");
                 }else{
-                    //如果注册成功 跳转到loginRedirect页面
                     $this->redirect(Yii::$app->getModule('user')->loginRedirect);
                 }
                 Yii::$app->session->setFlash("success", $successText . $guestText);

@@ -34,7 +34,7 @@ use kartik\datetime\DateTimePicker;
 
 <?php foreach ($generator->getColumnNames() as $attribute) {
     if (in_array($attribute, $safeAttributes)) {
-        //时间选择
+
         if(strpos($attribute,"_at") !== false){
             echo "<?php \$time = date(\"Y-m-d H:i:s\",\$model->isNewRecord ? time() : \$model->{$attribute});
                 echo \$form->field(\$model, '{$attribute}')->widget(DateTimePicker::classname(), [
@@ -93,8 +93,8 @@ use kartik\datetime\DateTimePicker;
     }
 } ?>
         <div class="form-group">
-        <?= "<?= " ?>Html::submitButton($model->isNewRecord ? <?= $generator->generateString('添加') ?> : <?= $generator->generateString('更新') ?>, ['class' => 'btn btn-primary btn-sm']) ?>
-        <?= "<?= " ?>Html::a('返回','index', ['class' => 'btn btn-default btn-sm']) ?>
+        <?= "<?= " ?>Html::submitButton($model->isNewRecord ? <?= $generator->generateString('Add to') ?> : <?= $generator->generateString('Update') ?>, ['class' => 'btn btn-primary btn-sm']) ?>
+        <?= "<?= " ?>Html::a('return','index', ['class' => 'btn btn-default btn-sm']) ?>
     </div>
     <br />
     <?= "<?php " ?>ActiveForm::end(); ?>

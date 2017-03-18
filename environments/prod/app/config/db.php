@@ -4,9 +4,9 @@ $config = [
     'components' => [
         'db' => [
             'class' => 'yii\db\Connection',
-            'dsn' => 'mysql:host=127.0.0.1;dbname=openadm',
+            'dsn' => 'mysql:host=127.0.0.1;dbname=diplom',
             'username' => 'root',
-            'password' => '123456',
+            'password' => '',
             'charset' => 'utf8',
             'tablePrefix' => 'oa_',
         ],

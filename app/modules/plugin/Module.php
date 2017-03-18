@@ -1,6 +1,6 @@
 <?php
 /**
- * 插件模块具体插件在 app\plugins\
+ *  app\plugins\
  * @author chuan xiong <xiongchuan86@gmail.com>
  */
 namespace app\modules\plugin;
@@ -35,12 +35,10 @@ class Module extends \yii\base\Module
         }
     }
 
-    //重写module的controller加载方式
     public function createController($route)
     {
         if(!$this->realRoute){
             $array = explode("/",$route);
-            //兼容 plugins/menu/MenuController.php的情况
             if(count($array)>=3 && $array[0] == $array[1]){
                 $file = Yii::getAlias('@plugins')."/{$array[0]}/".ucfirst($array[0])."Controller.php";
                 if(is_file($file)){
@@ -51,10 +49,9 @@ class Module extends \yii\base\Module
         }
         $controller = parent::createController($this->realRoute ? $this->realRoute : $route);
         if(!$controller){
-            //默认采用 $this->controllerNamespace 下增加 controllres
             $this->controllerNamespace = $this->controllerNamespace . '\\controllers' ;
             $route = str_replace($this->pluginid."/",'',$route,$i);
-            $route = $i==2 ? $this->pluginid."/".$route : $route;//menu/menu/index,menu/menu/都会被替换为空,重新加上menu/
+            $route = $i==2 ? $this->pluginid."/".$route : $route;//menu/menu/index,menu/menu
             $controller = parent::createController($this->realRoute ? $this->realRoute : $route);
         }
         return $controller;

@@ -46,7 +46,7 @@ if (($tableSchema = $generator->getTableSchema()) === false) {
     foreach ($generator->getColumnNames() as $name) {
         if($name == 'id'){
             echo '            [
-                    \'class\' => \'yii\grid\CheckboxColumn\',//复选框
+                    \'class\' => \'yii\grid\CheckboxColumn\',
                     \'multiple\' => true,
                     \'name\' => \'id\'
                 ],'."\n";
@@ -69,7 +69,7 @@ if (($tableSchema = $generator->getTableSchema()) === false) {
     foreach ($tableSchema->columns as $column) {
         if($column->name == 'id'){
             echo '            [
-                    \'class\' => \'yii\grid\CheckboxColumn\',//复选框
+                    \'class\' => \'yii\grid\CheckboxColumn\',
                     \'multiple\' => true,
                     \'name\' => \'id\'
                 ],'."\n";
@@ -77,7 +77,7 @@ if (($tableSchema = $generator->getTableSchema()) === false) {
         $format = $generator->generateColumnFormat($column);
         if($column->name=="create_at" || $column->name=="created_at"){
             echo '            [
-                \'label\'=>\'添加日期\',
+                \'label\'=>\'Add date\',
                 \'attribute\'=>\'create_at\',
                 \'format\' => [\'date\', \'php:Y-m-d H:i\'],
                 \'value\' => \'create_at\'
@@ -113,7 +113,7 @@ if (($tableSchema = $generator->getTableSchema()) === false) {
                 'active' => true
             ],
             [
-                'label' => <?=$generator->generateString('添加' . Inflector::camel2words(StringHelper::basename($generator->modelClass)))?>,
+                'label' => <?=$generator->generateString('Add to' . Inflector::camel2words(StringHelper::basename($generator->modelClass)))?>,
                 'url'=>['create'],
             ]
         ],
@@ -126,7 +126,7 @@ $this->registerJs('
 function oa_action(action,status,tips){
     var keys = $("#grid").yiiGridView("getSelectedRows");
     if(keys.length==0){
-        noty({text: "请至少选择一条数据!",type:\'warning\'});
+        noty({text: "Please select at least one data!",type:\'warning\'});
         return ;
     }
     if(tips == ""){
@@ -164,7 +164,7 @@ function oa_action(action,status,tips){
     }
 }
 $(".batchdelete").on("click", function () {
-    oa_action("deletes",1,"确定要删除?");
+    oa_action("deletes",1,"Be sure to delete?");
 });
 ');
 ?>

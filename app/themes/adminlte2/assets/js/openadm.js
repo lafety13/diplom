@@ -4,8 +4,8 @@ function oa_build_top_menu() {
     if(typeof OA_Menus == "object" ){
         for(var i in OA_Menus){
             var top_menu = OA_Menus[i];
-            if(top_menu.content.cfg_pid == 0){//说明是顶部菜单
-                if(typeof top_menu.items == "object"){//说明有子菜单
+            if(top_menu.content.cfg_pid == 0){
+                if(typeof top_menu.items == "object"){
                     top_menu_html += '<li><a id="nav'+top_menu.content.id+'" data-id="'+top_menu.content.id+'" href="#">'+top_menu.content.cfg_comment+'</a></li>';
                     OA_Menus_Children[top_menu.content.id] = top_menu.items;
                 }else{
@@ -47,7 +47,7 @@ function oa_build_left_menu(el) {
                     var subLeftMenuItems = currentLeftMenuItems[i].items;
                     sidebar_html += '<ul class="treeview-menu">';
                     for(var j in subLeftMenuItems){
-                        //判断有没有第三层菜单
+
                         if(typeof subLeftMenuItems[j].items == "undefined"){
                             sidebar_html += '<li><a id="nav'+subLeftMenuItems[j].content.id+'" class="openlink" data-label="'+subLeftMenuItems[j].content.cfg_comment+'" data-id="'+subLeftMenuItems[j].content.id+'" href="'+subLeftMenuItems[j].content.value.url+'"><i class="'+ ( oa_icon_is_empty( subLeftMenuItems[j].content.value.icon ) ? "fa  fa-angle-right" : subLeftMenuItems[j].content.value.icon) +'"></i> '+subLeftMenuItems[j].content.cfg_comment+'</a></li>';
                         }else{
@@ -80,10 +80,10 @@ function oa_topmenu_change_active(el) {
 
 function stopPropagation(e) {
     e = e || window.event;
-    if(e.stopPropagation) { //W3C阻止冒泡方法
+    if(e.stopPropagation) {
         e.stopPropagation();
     } else {
-        e.cancelBubble = true; //IE阻止冒泡方法
+        e.cancelBubble = true;
     }
 }
 
@@ -107,7 +107,6 @@ function oa_top_menu_click() {
 function oa_open_app(url,label,id) {
     var tab_box    = $('#tab_box');
     var tabnav_box = $('#tab_nav');
-    //判断tab是否已经存在
     if($('#tab_nav_'+id).length==0) {
         //create tab nav
         var tab_nav = $('<li data-id="'+id+'"  id="tab_nav_'+id+'" class="active"><a href="#tab_'+id+'"  data-toggle="tab">'+label+' <i class="fa fa-remove" onclick="oa_tab_close('+id+')"></i></a></li>');
@@ -116,7 +115,9 @@ function oa_open_app(url,label,id) {
         $(tab_nav).on('shown.bs.tab', function (e) {
             var id = $(e.target).parent().data('id');
             height = oa_intval($('#iframe_'+id).outerHeight());
-            oa_tab_iframe_height(id,height);//需要重新设置iframe的高度,否则点击其他tab再点击回来iframe高度不可用。
+            //Need to re-set the height of the iframe, otherwise click on the other tab and then click back iframe height is not available.
+            oa_tab_iframe_height(id,height);
+
         })
 
         //create content
@@ -160,15 +161,16 @@ function oa_tab_iframe_height(id,height) {
     var header_height  = oa_intval($('.main-header').outerHeight());
     var footer_height  = oa_intval($('.main-footer').outerHeight());
     var tab_nav_height = oa_intval($('#tab_nav').outerHeight());
-    //每次都重新设置高度
+    //Resets the height each time
     var iframe_height  = body_height - header_height - tab_nav_height - footer_height;
     //console.log(body_height ,header_height , tab_nav_height , footer_height)
     if(iframe_height < iframe_min_height){
         iframe_height = iframe_min_height;
     }
     if(typeof height == "number"){
-        //需要重新设置iframe的高度,否则点击其他tab再点击回来iframe高度不可用。
-        //必须要赋值一个新的高度,否则不生效
+        //Need to re-set the height of the iframe,
+        //otherwise click on the other tab and then click back iframe height is not available.
+        //Must be assigned a new height, otherwise it will not take effect
         if(iframe_height == height){
             $("#iframe_"+id).attr('height',iframe_height-1);
         }else{
@@ -193,7 +195,7 @@ function initOpenAdmMenusEvents() {
 }
 
 function oa_setTabActiveById(id) {
-    //切换active为当前的tab
+    //Switch active to the current tab
     $('#tab_nav li').removeClass('active');
     $('#tab_nav_'+id).addClass('active');
     //tab content
@@ -272,22 +274,20 @@ function oa_tab_context_menu(el) {
 
 function oa_update_menu(delMenuId)
 {
-    //如果是删除菜单的操作,则需要关闭相应的tab window
+    //If you delete the menu operation, you need to close the corresponding tab window
     if(typeof delMenuId == "number")oa_tab_close(delMenuId);
 
-    //记录当前的top menu的active状态
     var activeLi = $('#topmenu li.active');
     var activeMenuId = 0;
     if(activeLi.length>0){
         activeMenuId = parseInt($(activeLi).find('a').data('id'));
     }
-    //记录左侧菜单的active状态
     var leftActiveLi = $('.sidebar-menu li.active');
     var leftActiveMenuId = 0;
     if(leftActiveLi.length>0){
         leftActiveMenuId = parseInt($(leftActiveLi).find('a').data('id'));
     }
-    //请求后台,获取最新的菜单数据
+    //Request the background, get the latest menu data
     $.get('/admin/dashboard/index',function (data) {
         $('body').append(data);
         oa_build_top_menu();
@@ -332,7 +332,8 @@ function checkTopWindow() {
         if(typeof User == "undefined"){
             var pattern = new RegExp("#\d*");
             if(!pattern.test(document.title)){
-                var url = window.location.protocol+'//'+window.location.host+'/admin/dashboard?url='+location.href+"&title="+document.title;
+                //?url='+location.href+"&title="+document.title
+                var url = window.location.protocol+'//'+window.location.host+'/admin/dashboard';
                 top.location.href = url;
             }
         }

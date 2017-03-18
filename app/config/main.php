@@ -13,7 +13,7 @@ $config = [
     //change
     'language'=>'en-US',
 
-   // 'sourceLanguage' => 'en-US',
+    'sourceLanguage' => 'en-US',
     'TimeZone' => 'PRC',
     'on beforeRequest' =>['app\common\SystemEvent','beforeRequest'],
     'defaultRoute' => 'site/index',
@@ -101,7 +101,7 @@ $config = [
             'class' => 'amnah\yii2\user\components\User',
             'loginUrl' => '/user/admin/login'
         ],
-        //文件系统
+
         'fs' => [
             'class' => 'creocoder\flysystem\LocalFilesystem',
             'path' => '@webroot/uploads',
@@ -133,7 +133,7 @@ $config = [
                 'admin' => [
                     'class' => 'app\modules\user\controllers\AdminController',
                     'protected_uids' => [1],
-                    'superadmin_uid' => 1,//超级管理员
+                    'superadmin_uid' => 1,
                 ],
                 'default' => [
                     'class' => 'app\modules\user\controllers\DefaultController',

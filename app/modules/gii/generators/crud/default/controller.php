@@ -191,9 +191,9 @@ if (count($pks) === 1) {
                 $model->delete();
             }
             $result['data'] = $data;
-            $result['msg']  = '删除完成!';
+            $result['msg']  = 'Delete is complete!';
             }else{
-                $result=['code'=>0,'msg'=>'请选择要删除的数据!'];
+                $result=['code'=>0,'msg'=>'Please select the data to be deleted!'];
             }
 
             if (Yii::$app->request->isAjax) {

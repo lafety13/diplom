@@ -5,7 +5,7 @@ use yii\helpers\Url;
     <header class="main-header">
 
         <!-- Logo -->
-        <a href="/admin/dashboard" class="logo">
+        <a href="<?=Url::to('/admin/dashboard')?>" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><b>ADM</b></span>
             <!-- logo for regular state and mobile devices -->
@@ -27,13 +27,14 @@ use yii\helpers\Url;
                     <!-- User Account: style can be found in dropdown.less -->
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <span class="hidden-xs"><?=Yii::$app->user->displayName?></span>
+                            <span style="width: auto" class="hidden-xs"><?=Yii::$app->user->displayName?><span style="padding-left: 10px" class="glyphicon glyphicon-th-list" aria-hidden="true"></span></span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- Menu Footer-->
-                            <li><a data-id="10001" class="openlink" href="<?=Url::to('/user/admin/profile')?>"><i class="fa fa-user"></i> 个人资料</a></li>
-                            <li><a data-id="10002" class="openlink" href="<?=Url::to('/user/admin/account')?>"><i class="fa fa-user"></i> 修改密码</a></li>
-                            <li><a href="<?=Url::to('/user/admin/logout')?>"><i class="fa  fa-sign-out"></i> 退出</a></li>
+                            <li><a data-id="10001" class="openlink" href="<?=Url::to('/user/admin/profile')?>"><i class="fa fa-user"></i>Profile</a></li>
+                            <li><a data-id="10002" class="openlink" href="<?=Url::to('/user/admin/account')?>"><i class="fa fa-user"></i>Account</a></li>
+                            <li><a href="<?=Yii::$app->getHomeUrl()?>"><i class="glyphicon glyphicon-home"></i>My site</a></li>
+                            <li><a href="<?=Url::to('/user/admin/logout')?>"><i class="fa  fa-sign-out"></i>Logout</a></li>
                         </ul>
                     </li>
                 </ul>

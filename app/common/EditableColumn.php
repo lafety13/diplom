@@ -90,7 +90,6 @@ class EditableColumn extends DataColumn
         } elseif (is_array($this->editableOptions)) {
             $opts = $this->editableOptions;
         }
-        //增加特性,当返回的数据不是数组的时候,返回常规的table cell 的数据
         if(is_array($opts)){
             foreach ($opts as $prop => $v) {
                 $this->options['data-' . $prop] = $v;

@@ -28,16 +28,16 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="box-body">
 
     <p>
-        <?= "<?= " ?>Html::a(<?= $generator->generateString('添加') ?>, ['create'], ['class' => 'btn btn-primary btn-sm']) ?>
-        <?= "<?= " ?>Html::a(<?= $generator->generateString('编辑') ?>, ['update', <?= $urlParams ?>], ['class' => 'btn btn-success btn-sm']) ?>
-        <?= "<?= " ?>Html::a(<?= $generator->generateString('删除') ?>, ['delete', <?= $urlParams ?>], [
+        <?= "<?= " ?>Html::a(<?= $generator->generateString('Add to') ?>, ['create'], ['class' => 'btn btn-primary btn-sm']) ?>
+        <?= "<?= " ?>Html::a(<?= $generator->generateString('edit') ?>, ['update', <?= $urlParams ?>], ['class' => 'btn btn-success btn-sm']) ?>
+        <?= "<?= " ?>Html::a(<?= $generator->generateString('delete') ?>, ['delete', <?= $urlParams ?>], [
             'class' => 'btn btn-danger btn-sm',
             'data' => [
                 'confirm' => <?= $generator->generateString('Are you sure you want to delete this item?') ?>,
                 'method' => 'post',
             ],
         ]) ?>
-        <?= "<?= " ?>Html::a(<?= $generator->generateString('返回') ?>, ['index'], ['class' => 'btn btn-default btn-sm']) ?>
+        <?= "<?= " ?>Html::a(<?= $generator->generateString('return') ?>, ['index'], ['class' => 'btn btn-default btn-sm']) ?>
     </p>
 
     <?= "<?= " ?>DetailView::widget([

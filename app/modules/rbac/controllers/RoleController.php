@@ -63,7 +63,6 @@ class RoleController extends ItemController
         $model = $this->findModel($id);
         $roleName = $model->name;
 
-        //删除role,先执行删除role表的数据,如果role下面有用户,不允许删除
         try{
             $this->deleteRole($roleName);
             Yii::$app->getAuthManager()->remove($model->item);
@@ -77,7 +76,7 @@ class RoleController extends ItemController
     }
 
     /**
-     * 新增或者修改 role table
+     *  role table
      * @param $newRole
      * @param string $oldRole
      */
@@ -86,10 +85,8 @@ class RoleController extends ItemController
         $should = 0;//1=insert,2=update,0=nothing to do
         $role   = null;
         if($oldRole){
-            //更新
             $role = Role::find()->where(['name'=>$oldRole])->one();
             if(!$role){
-                //不存在就创建
                 $role = Role::find()->where(['name'=>$newRole])->one();
                 if(!$role){
                     $should = 1;
@@ -98,7 +95,6 @@ class RoleController extends ItemController
                 $should = 2;
             }
         }else{
-            //新增
             $role = Role::find()->where(['name'=>$newRole])->one();
             if(!$role){
                 $should = 1;
@@ -107,7 +103,6 @@ class RoleController extends ItemController
 
         switch ($should){
             case 1:
-                //创建
                 $role = new Role;
                 $role->name = $newRole;
                 $role->created_at = date("Y-m-d H:i:s",time());
@@ -115,7 +110,6 @@ class RoleController extends ItemController
                 $role->save();
                 break;
             case 2:
-                //更新
                 $role->name = $newRole;
                 $role->updated_at = date("Y-m-d H:i:s",time());
                 $role->save();

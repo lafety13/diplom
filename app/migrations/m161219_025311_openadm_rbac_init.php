@@ -6,8 +6,8 @@ class m161219_025311_openadm_rbac_init extends Migration
 {
     public function safeUp()
     {
-        $this->createRole('Admin', '超级管理员');
-        $this->createRole('User', '普通用户');
+        $this->createRole('Admin', 'Super administrator');
+        $this->createRole('User', 'General user');
 
         $this->createPermission('/*');
         $this->createPermission('/admin/dashboard/*');

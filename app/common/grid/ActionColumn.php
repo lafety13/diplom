@@ -141,9 +141,9 @@ class ActionColumn extends GridActionColumn
     public function getName($name)
     {
         $names = [
-            'view' => '查看',
-            'update' => '编辑',
-            'delete' => '删除'
+            'view' => 'view',
+            'update' => 'update',
+            'delete' => 'delete'
         ];
         return isset($names[$name]) ? $names[$name] : '';
     }

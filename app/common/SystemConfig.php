@@ -1,11 +1,6 @@
 <?php
 namespace app\common;
 use yii;
-
-/**
- * 获取sytem_config的配置
- * @author xiongchuan <xiongchuan86@gmail.com>
- */
  
 class SystemConfig 
 {
@@ -50,7 +45,7 @@ class SystemConfig
     }
 	
 	/**
-	 * 返回 array(value=>comment)类型数据
+	 *  array(value=>comment)
 	 * @return array
 	 */
 	static public function GetArrayValue($name,$pid=0,$type='USER')
@@ -75,7 +70,6 @@ class SystemConfig
 	}
 	
 	/**
-	 * 获取配置的数据
 	 * @return array
 	 */
 	static public function Get($name='',$pid=0,$type='USER',$allowCaching = true)
@@ -95,7 +89,6 @@ class SystemConfig
 	}
 
     /**
-     * 获取配置的数据,取第一个
      * @return array
      */
     static public function GetOne($name='',$pid=0,$type='USER')
@@ -105,9 +98,9 @@ class SystemConfig
     }
 	
 	/**
-	 * @param $name string 配置项的KEY
-	 * @param $value array 配置的值
-	 * @return int|false  成功返回lastInsertId
+	 * @param $name string KEY
+	 * @param $value array
+	 * @return int|false  lastInsertId
 	 */
 	static public function Set($name,array $value)
 	{
@@ -136,7 +129,6 @@ class SystemConfig
 	}
 	
 	/**
-	 * 查询配置 支持分页
 	 * @return array|boolean
 	 * @modify xubaoguo 
 	 * @comment add a item to controll a group data
@@ -209,7 +201,7 @@ class SystemConfig
 	 
 	
 	/**
-	 * 查询配置
+	 *
 	 * @return array|boolean
 	 */
 	static private function _Get($name,$pid,$type){
@@ -240,9 +232,9 @@ class SystemConfig
 	}
 	
 	/**
-	 * 通过id更新配置
-	 * @param $id int   主键
-	 * @param $value array 值
+	 *id
+	 * @param $id int
+	 * @param $value array
 	 * @return boolean
 	 */
 	static public function Update($id,array $value)
@@ -269,8 +261,8 @@ class SystemConfig
 		return false;
 	}
 	/*
-	 * 通过id 修改显示状态
-	 * @param $id int   主键
+	 * id
+	 * @param $id int
 	 * @return boolean
 	 * 
 	 * */
@@ -289,8 +281,8 @@ class SystemConfig
 		Yii::$app->db->createCommand($sql_update)->bindValues(array(":id"=>$id,":status"=>$newStatus))->execute();
 	 }
 	/**
-	 * 移除配置
-	 * @param $id int  主键
+	 *
+	 * @param $id int
 	 * @return boolean
 	 */
 	static public function Remove($id)
@@ -302,8 +294,8 @@ class SystemConfig
 	}
 
     /**
-     * openadm的版本号
-     * @return string OpenAdm 框架版本号
+     * openadm
+     * @return string OpenAdm
      */
 	static public function getVersion()
     {

@@ -91,7 +91,7 @@ class m150214_044831_init_user extends Migration
             [
                 1,
                 1, // Role::ROLE_ADMIN
-                'admin@openadm.com',
+                'koozyy13@gmail.com',
                 'admin',
                 '$2y$13$Ry8EHO0bSoIt2/8TvHEeiOmZmy6TYd0tjMztO8tsJku1ltlGCBVXe', // admin
                 1, // User::STATUS_ACTIVE

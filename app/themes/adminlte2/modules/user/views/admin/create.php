@@ -10,9 +10,9 @@ use yii\helpers\Html;
 
 $role_id = Yii::$app->request->get("role_id","");
 if($role_id == 1){
-    $title = "添加管理员";
+    $title = "Add an administrator";
 }else{
-    $title = "添加用户";
+    $title = "Add user";
 }
 $this->title = $title;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('user', 'Users'), 'url' => ['index']];

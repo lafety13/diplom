@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'method' => 'post',
             ],
         ]) ?>
-        <?php echo Html::a(Yii::t('user', '返回'),['index'], ['class' => 'btn btn-default']); ?>
+        <?php echo Html::a(Yii::t('user', 'Return'),['index'], ['class' => 'btn btn-default']); ?>
     </p>
 
     <?= DetailView::widget([
