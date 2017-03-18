@@ -1,3 +1,6 @@
+# yii console command
+yii
+composer.lock
 # phpstorm project files
 .idea
 
@@ -26,5 +29,19 @@ phpunit.phar
 # local phpunit config
 /phpunit.xml
 
-tests/_output/*
-tests/_support/_generated
+#runtime
+/runtime/*
+
+#assets
+/web/static/assets/*
+/web/assets/*
+
+/web/uploads/*
+/app/runtime/*
+
+/app/config/*-local.php
+
+/storage/backup/*.sql
+/storage/backup/*.sql.gz
+
+web/index.php

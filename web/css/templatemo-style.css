@@ -1468,3 +1468,29 @@ ul.archive-list li h3 a:hover {
 .map-canvas {
   height: 425px;
 }
+
+.label-left-mainstyle {
+  text-align:left !important;
+}
+
+.input-wrapper input {
+  width: 60% !important;
+}
+
+.input-wrapper textarea {
+  max-width: 90% !important;
+  width: 90%;
+}
+
+.input-wrapper  .captcha-position{
+  width: 50%;
+  float: left;
+}
+.image-style {
+  margin-left: 10px;
+}
+
+.captcha-position {
+
+}
+
