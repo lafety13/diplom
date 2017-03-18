@@ -51,7 +51,9 @@ return [
     'yii\\bootstrap\\BootstrapAsset' => [
         'sourcePath' => null,
         'js' => [],
-        'css' => [],
+        'css' => [
+
+        ],
         'depends' => [
             'allBackEnd',
         ],

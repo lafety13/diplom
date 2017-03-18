@@ -2,11 +2,14 @@
 
 namespace app\controllers;
 
+use kartik\helpers\Html;
+use Yii;
 use app\common\Controller;
 use app\models\Blog;
-use Yii;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use yii\data\Pagination;
+use yii\helpers\Url;
 
 class SiteController extends Controller
 {
@@ -97,8 +100,18 @@ class SiteController extends Controller
 
     public function actionBlog()
     {
-        $articles = Blog::getAllArticles();
-        return $this->render('blog', ['articles' => $articles]);
+        $query = Blog::find();
+        $countQuery = clone $query;
+        $pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize' => 1]);
+        $articles = $query->offset($pages->offset)
+            ->limit($pages->limit)
+            ->all();
+
+        return $this->render('blog', [
+            'articles' => $articles,
+            'pages' => $pages,
+        ]);
+
     }
 
     public function actionArticle($id)

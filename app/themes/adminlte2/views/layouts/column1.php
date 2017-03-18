@@ -6,6 +6,7 @@
 use app\themes\adminlte2\AppAsset;
 use app\themes\adminlte2\FontAsset;
 use yii\helpers\Html;
+use yii\helpers\Url;
 
 
 AppAsset::register($this);
@@ -73,11 +74,19 @@ FontAsset::register($this);
                 <div class="menu-wrapper col-md-9 col-sm-6 col-xs-4">
                     <a href="#" class="toggle-menu visible-sm visible-xs"><i class="fa fa-bars"></i></a>
                     <ul class="sf-menu hidden-xs hidden-sm">
-                        <li class="active"><a href="<?=Yii::$app->getHomeUrl(); ?>">Home</a></li>
-                        <li><a href="#">Booking</a></li>
-                        <li><a href="<?=Yii::$app->getUrlManager()->createUrl(['site/blog'])?>">Blog</a></li>
+                        <li class="<?=(Url::to() == Yii::$app->getHomeUrl() or Url::to() == '/site/index') ?  'active' :  ''?>">
+                            <a href="<?=Yii::$app->getHomeUrl(); ?>">Home</a>
+                        </li>
+                        <li>
+                            <a href="#">Booking</a>
+                        </li>
+                        <li class="<?=(Url::to() == '/site/blog') ?  'active' :  ''?>">
+                            <a href="<?=Yii::$app->getUrlManager()->createUrl(['site/blog'])?>">Blog</a>
+                        </li>
                         <li><a href="#">Pages</a></li>
-                        <li><a href="<?=Yii::$app->getUrlManager()->createUrl(['site/contact']); ?>">Contact</a></li>
+                        <li class="<?=(Url::to() == '/site/contact') ?  'active' :  ''?>">
+                            <a href="<?=Yii::$app->getUrlManager()->createUrl(['site/contact']); ?>">Contact</a>
+                        </li>
                     </ul>
                 </div> <!-- /.menu-wrapper -->
             </div> <!-- /.row -->

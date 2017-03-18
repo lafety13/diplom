@@ -50,11 +50,11 @@ $config = [
            // 'bundles' => require(__DIR__ . '/' . (YII_ENV_PROD ? 'assets-prod.php' : 'assets-dev.php')),
             'bundles' => [
                 require(__DIR__ . '/' . (YII_ENV_PROD ? 'assets-prod.php' : 'assets-dev.php')),
-             /*   'yii\bootstrap\BootstrapAsset' => [
+               /*'yii\bootstrap\BootstrapAsset' => [
                     'sourcePath' => null,
                     'basePath' => '@webroot',
                     'baseUrl' => '@web',
-                    'css' => ['css/bootstrap.css'],
+                    'css' => ['css/bootstrap/bootstrap.css'],
                 ],*/
             ],
         ],

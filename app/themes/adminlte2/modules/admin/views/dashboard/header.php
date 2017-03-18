@@ -27,7 +27,7 @@ use yii\helpers\Url;
                     <!-- User Account: style can be found in dropdown.less -->
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <span style="width: auto" class="hidden-xs"><?=Yii::$app->user->displayName?><span style="padding-left: 10px" class="glyphicon glyphicon-th-list" aria-hidden="true"></span></span>
+                            <span class="hidden-xs"><?=Yii::$app->user->displayName?><i style="padding-left: 10px" class="glyphicon glyphicon-th-list" aria-hidden="true"></i></span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- Menu Footer-->

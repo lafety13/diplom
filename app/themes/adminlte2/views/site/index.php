@@ -8,7 +8,7 @@ $this->title = 'My Yii Application';
 <div class="swiper-container">
     <div class="swiper-wrapper">
 
-        <div class="swiper-slide" style="background-image: url(images/slide1.jpg);">
+        <div class="swiper-slide" style="background-image: url(../images/slide1.jpg);">
             <div class="overlay-s"></div>
             <div class="slider-caption">
                 <div class="inner-content">
@@ -19,7 +19,7 @@ $this->title = 'My Yii Application';
             </div> <!-- /.slider-caption -->
         </div> <!-- /.swier-slide -->
 
-        <div class="swiper-slide" style="background-image: url(images/slide2.jpg);">
+        <div class="swiper-slide" style="background-image: url(../images/slide2.jpg);">
             <div class="overlay-s"></div>
             <div class="slider-caption">
                 <div class="inner-content">
@@ -30,7 +30,7 @@ $this->title = 'My Yii Application';
             </div> <!-- /.slider-caption -->
         </div> <!-- /.swier-slide -->
 
-        <div class="swiper-slide" style="background-image: url(images/slide3.jpg);">
+        <div class="swiper-slide" style="background-image: url(../images/slide3.jpg);">
             <div class="overlay-s"></div>
             <div class="slider-caption">
                 <div class="inner-content">

@@ -21,7 +21,7 @@ class Blog extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'blog';
+        return 'oa_blog';
     }
 
     /**
@@ -30,9 +30,9 @@ class Blog extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'short_description', 'image', 'date'], 'required'],
+            [['title', 'short_description', 'preview_image', 'date'], 'required'],
             [['short_description', 'date'], 'string'],
-            [['title', 'image'], 'string', 'max' => 100],
+            [['title', 'preview_image'], 'string', 'max' => 100],
         ];
     }
 
@@ -45,7 +45,7 @@ class Blog extends \yii\db\ActiveRecord
             'id' => 'ID',
             'title' => 'Title',
             'short_description' => 'Short Description',
-            'image' => 'Image',
+            'preview_image' => 'Image',
             'date' => 'Date',
         ];
     }
@@ -61,6 +61,11 @@ class Blog extends \yii\db\ActiveRecord
             throw new NotFoundHttpException('Article not found');
         }
         return $article;
+    }
+
+    public static function count()
+    {
+        return Blog::count();
     }
 
 }

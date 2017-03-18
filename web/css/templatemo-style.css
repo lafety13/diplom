@@ -1249,11 +1249,13 @@ div.load-more a.load-more:active {
 .pagination ul li a:active {
   border-bottom: none;
 }
-.pagination ul li a.active {
-  background-color: #f69730;
-  color: white;
-  border-bottom: 1px solid #e97e0a;
+
+.pagination ul li a.active  {
+  background-color: #f69730 !important;
+  color: white !important;
+  border-bottom: 1px solid #e97e0a !important;
 }
+
 
 h2.comment-heading {
   font-size: 20px;
