@@ -21,7 +21,6 @@ class PluginManagerController extends Controller
 	public function actionLocal($tab = "all",$page=1)
 	{
 		$tab = in_array($tab,array('all','setuped','new')) ? $tab : 'all';
-		//获取插件
 		$pageSize = 20;
 		$result = PluginManager::GetPlugins($tab,$page,$pageSize);
 		return $this->render("local",['tab'=>$tab,'result'=>$result]);

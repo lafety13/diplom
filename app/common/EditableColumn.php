@@ -1,9 +1,5 @@
 <?php
-/**
- * 修改 yii2mod\editable\EditableColumn 的 renderDataCellContent 方法
- * 兼容性更强
- * @author chuan xiong <xiongchuan86@gmail.com>
- */
+
 namespace app\common;
 
 use yii\base\InvalidConfigException;

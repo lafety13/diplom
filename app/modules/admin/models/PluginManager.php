@@ -1,9 +1,5 @@
 <?php
-/**
- * 插件管理者
- * 插件id,插件目录，必须为小写
- * @author xiongchuan <xiongchuan@luxtonenet.com>
- */
+
 namespace app\modules\admin\models;
 use yii;
 use app\common\SystemConfig;
@@ -136,7 +132,7 @@ class PluginManager
         if(is_file($pluginconfigfile)){
             if(!static::ParsePluginConfig($pluginid))return false;
             $config['config'] = require $pluginconfigfile;
-            //检查依赖插件
+
             if($checkDependency){
                 static::CheckDependency($config['config']);
             }
@@ -371,7 +367,6 @@ class PluginManager
         $configRaw = static::GetPluginConfig($pluginid,true,null,false);
         $conf      = $configRaw['config'];
         if(!$conf){
-            //plugin 目录异常
             static::showMsg("");
             static::showMsg("Get plugin configuration failed, please check plug-in is normal!",1,'error');
             return false;
@@ -405,7 +400,7 @@ class PluginManager
             ];
             $cmd = join(" ",$cmds);
             static::showMsg("<p id='cmd_box' style='background-color: #2c763e;color:#f5db88'>",0);
-            //执行
+
             $handler = popen($cmd, 'r');
             static::showMsg("cmd:  ".$cmd."\n",1,'','cmd_box');
             while (!feof($handler)) {
@@ -493,7 +488,6 @@ class PluginManager
             }catch (InvalidParamException $e){
 
             }
-            //删除自己
             SystemConfig::Remove($plugin['id']);
         }
         return false;

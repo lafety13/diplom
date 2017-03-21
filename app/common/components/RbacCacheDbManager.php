@@ -1,7 +1,5 @@
 <?php
-/**
- * 重写 getAssignments 启动缓存
- */
+
 namespace app\common\components;
 
 use yii\db\Query;

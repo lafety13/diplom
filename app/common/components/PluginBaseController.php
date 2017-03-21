@@ -1,9 +1,5 @@
 <?php
-/**
- * PluginBaseController
- * 所有的插件都要继承此controller
- * @author xiongchuan <xiongchuan86@gmail.com>
- */
+
 namespace app\common\components;
 use yii\base\UnknownPropertyException;
 use yii;
