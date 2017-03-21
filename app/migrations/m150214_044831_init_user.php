@@ -21,6 +21,16 @@ class m150214_044831_init_user extends Migration
             'updated_at' => Schema::TYPE_TIMESTAMP . ' null',
             'can_admin' => Schema::TYPE_SMALLINT . ' not null default 0',
         ], $tableOptions);
+        $this->createTable('{{%blog}}', [
+            'id' => Schema::TYPE_PK,
+            'title' => Schema::TYPE_STRING . ' not null',
+            'short_description' => Schema::TYPE_STRING . 'not null',
+            'text' => Schema::TYPE_TEXT . 'not null',
+            'author' => Schema::TYPE_STRING . ' not null',
+            'date' => Schema::TYPE_DATE . ' not null',
+            'preview_image' => Schema::TYPE_STRING . ' not null',
+            'tags' => Schema::TYPE_STRING . ' not null',
+        ], $tableOptions);
         $this->createTable('{{%user}}', [
             'id' => Schema::TYPE_PK,
             'role_id' => Schema::TYPE_INTEGER . ' not null',
