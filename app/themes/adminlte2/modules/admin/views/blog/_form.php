@@ -1,4 +1,5 @@
 <?php
+use mihaildev\ckeditor\CKEditor;
 use yii\helpers\Json;
 use yii\helpers\Html;
 use yii\web\JsExpression;
@@ -13,19 +14,26 @@ use kartik\datetime\DateTimePicker;
 
 <div class="blog-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'short_description')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'text')->textarea(['rows' => 6]) ?>
+    <?=
+    $form->field($model, 'text')->widget(CKEditor::className(),[
+        'editorOptions' => [
+            'preset' => 'full',
+            'inline' => false,
+        ],
+    ]);
+    ?>
 
     <?= $form->field($model, 'author_id')->textInput(['value' => Yii::$app->user->getId(), 'readonly' => true])?>
 
     <?= $form->field($model, 'date')->textInput(['value' => date("F j, Y, g:i a"), 'readonly' => true])?>
 
-    <?= $form->field($model, 'preview_image')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'preview_image')->fileInput() ?>
 
     <?= $form->field($model, 'tags')->textInput(['maxlength' => true]) ?>
 
