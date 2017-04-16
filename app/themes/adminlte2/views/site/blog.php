@@ -33,7 +33,8 @@ $this->title = "Blog";
                                 <div class="box-content">
                                     <h3 class="post-title"><a href="<?=Yii::$app->getUrlManager()->createUrl(['site/article', 'id' => $article->id])?>"><?=$article->title?></a></h3>
                                     <span class="blog-meta"><?=$article->date?></span>
-                                    <p><?=$article->short_description?></p>
+                                    <a href="#"><?=\app\modules\admin\models\Blog::getAuthor($article->author_id)->username?></a>
+
                                 </div>
                             </div>
                         </div> <!-- /.post-masonry -->

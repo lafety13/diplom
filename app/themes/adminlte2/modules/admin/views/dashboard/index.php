@@ -53,9 +53,9 @@ $this->registerJs( '
         <?php if(0 && !Yii::$app->user->isGuest):?>
             <footer class="main-footer">
                 <div class="pull-right hidden-xs">
-                    Powered by <strong><a href="http://openadm.com" target="_blank">OpenADM.Com</a>.</strong> <b>Version</b> <?=\app\common\SystemConfig::getVersion()?>
+                    Powered by <strong><a href="#" target="_blank"></a>.</strong> <b>Version</b> <?=\app\common\SystemConfig::getVersion()?>
                 </div>
-                <strong>Copyright &copy; 2016-2017 <a href="http://openadm.com" target="_blank"><?=Yii::$app->name?></a>.</strong> All rights
+                <strong>Copyright &copy; 2016-2017 <a href="#" target="_blank"><?=Yii::$app->name?></a>.</strong> All rights
                 reserved.
             </footer>
         <?php endif;?>

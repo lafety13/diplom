@@ -2,14 +2,14 @@
 
 namespace app\controllers;
 
+use amnah\yii2\user\models\User;
+use app\models\ContactForm;
 use kartik\helpers\Html;
 use Yii;
 use app\common\Controller;
-use app\models\Blog;
-use app\models\LoginForm;
-use app\models\ContactForm;
 use yii\data\Pagination;
 use yii\helpers\Url;
+use app\modules\admin\models\Blog;
 
 class SiteController extends Controller
 {
@@ -36,26 +36,6 @@ class SiteController extends Controller
     public function actionIndex()
     {
         return $this->render('index');
-    }
-
-    /**
-     * Login action.
-     *
-     * @return string
-     */
-    public function actionLogin()
-    {
-        if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
-        }
-
-        $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
-        }
-        return $this->render('login', [
-            'model' => $model,
-        ]);
     }
 
     /**

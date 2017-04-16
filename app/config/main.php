@@ -62,11 +62,15 @@ $config = [
             'class' =>'app\modules\admin\components\ErrorHandler',
             'errorAction' => 'site/error',
         ],
+        'request' => [
+            'baseUrl' => '',
+        ],
         'urlManager' => [
 		       'enablePrettyUrl' => true,
 		       'showScriptName' => false,
 		       'enableStrictParsing' => false,
 		       'rules'=>[
+		           '' => 'site/index'
                ],
 		   ],
 

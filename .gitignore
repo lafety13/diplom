@@ -39,9 +39,13 @@ phpunit.phar
 /web/uploads/*
 /app/runtime/*
 
-
-
 /storage/backup/*.sql
 /storage/backup/*.sql.gz
 
-#web/index.php
+/app/config/*-local.php
+
+web/index.php
+
+
+
+

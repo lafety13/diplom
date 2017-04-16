@@ -36,7 +36,7 @@ class RoleController extends ItemController
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             Yii::$app->session->setFlash('success', Yii::t('yii2mod.rbac', 'Role has been saved.'));
-            //创建role
+            //role
             $this->insertOrUpdateToRoleTable($model->name);
             return $this->redirect(['view', 'id' => $model->name]);
         }
@@ -50,7 +50,7 @@ class RoleController extends ItemController
         $oldRole = $model->name;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             Yii::$app->session->setFlash('success', Yii::t('yii2mod.rbac', 'Role has been saved.'));
-            //更新role
+            //role
             $this->insertOrUpdateToRoleTable($model->name,$oldRole);
             return $this->redirect(['index']);
         }

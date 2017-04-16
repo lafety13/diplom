@@ -46,7 +46,7 @@ if(is_array($result) && isset($result['data'])){
 			if(!empty($v['config']['needed'])){
 				$v['config']['description'] .= "<br/>"."<font color='#f00' id='needed'>Missing dependency plugin:</font>".$v['config']['needed'];
 			}
-			//增加操作类型
+
             $btn_setup_label = Html::tag('i','Installation',['class'=>'fa fa-cog']);
 			$btn_setup = Html::a($btn_setup_label,'#',['class' => 'setup btn btn-xs btn-primary','style'=>'','data-toggle' => 'modal']);
 

@@ -22,7 +22,7 @@ class m161219_020410_openadm_init extends Migration
             'cfg_comment' => $this->string(255)->comment('Configuration instructions'),
         ], $tableOptions);
 
-        //索引
+
         $this->createIndex('{{%cfg_name}}', '{{%system_config}}', 'cfg_name', false);
         $this->createIndex('{{%cfg_pid}}', '{{%system_config}}', 'cfg_pid', false);
         $this->createIndex('{{%cfg_type}}', '{{%system_config}}', 'cfg_type', false);
@@ -40,7 +40,9 @@ class m161219_020410_openadm_init extends Migration
             [8,'MENU', '{"url":"/rbac/role"}', 0, 3, $ctime, 'USER', 1, 'Roles'],
             [9,'MENU', '{"url":"/rbac/route"}', 0, 3, $ctime, 'USER', 1, 'Routes'],
             //Article 12 routing is important, delete the plug-in management function can not be properly accessed
-            [10,'PLUGINMANAGER_ROUTE', $route, 0, 0, $ctime, 'ROUTE', 1, 'Plug-in management routing']
+            [10,'PLUGINMANAGER_ROUTE', $route, 0, 0, $ctime, 'ROUTE', 1, 'Plug-in management routing'],
+            [11,'MENU', '{"url":"/admin/blog/index"}', 0, 2, $ctime, 'USER', 1, 'Blog Management']
+
         ]);
 
     }

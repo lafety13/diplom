@@ -19,6 +19,7 @@ class m161219_025311_openadm_rbac_init extends Migration
         $this->createPermission('/site/*');
         $this->createPermission('/user/*');
         $this->createPermission('/user/default/*');
+        $this->createPermission('/admin/blog/*');
 
         $this->addChild('Admin', '/*');
         $this->addChild('Admin', '/admin/dashboard/*');
@@ -29,6 +30,7 @@ class m161219_025311_openadm_rbac_init extends Migration
         $this->addChild('Admin', '/rbac/*');
         $this->addChild('Admin', '/site/*');
         $this->addChild('Admin', '/user/*');
+        $this->addChild('Admin', '/admin/blog/*');
 
 
         $this->addChild('User', '/admin/dashboard/*');

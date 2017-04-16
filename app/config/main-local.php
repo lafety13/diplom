@@ -5,20 +5,20 @@ $config = [
         'request' => [
             'enableCsrfValidation' => true,
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => '10xI6pUo4zNDaMSSzhekbdpnl5CGckrz',
+            'cookieValidationKey' => 'HjtUM2xd-xQ1yB91Syoweav40jW_r_zW',
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
-            'viewPath' => '@app/mail',
-            'htmlLayout' => 'layouts/main-html',
-            'textLayout' => 'layouts/main-text',
+            'messageConfig' => [
+                'from'  => 'master@openadm.com',
+            ],
             'transport' => [
                 'class' => 'Swift_SmtpTransport',
-                'host' => 'smtp.gmail.com',
-                'username' => 'koozyy13@gmail.com',
-                'password' => '125255503',
-                'port' => '587',
-                'encryption' => 'tls',
+                'host' => 'smtp.exmail.qq.com',
+                'username' => '',
+                'password' => '',
+                //'port' => '465',
+                //'encryption' => 'tls',
             ],
         ],
     ],
