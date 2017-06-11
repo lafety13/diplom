@@ -70,7 +70,8 @@ $config = [
 		       'showScriptName' => false,
 		       'enableStrictParsing' => false,
 		       'rules'=>[
-		           '' => 'site/index'
+		           '' => 'site/index',
+
                ],
 		   ],
 

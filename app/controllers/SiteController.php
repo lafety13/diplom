@@ -4,6 +4,8 @@ namespace app\controllers;
 
 use amnah\yii2\user\models\User;
 use app\models\ContactForm;
+use app\modules\admin\models\Comment;
+use app\modules\admin\models\Travels;
 use kartik\helpers\Html;
 use Yii;
 use app\common\Controller;
@@ -82,7 +84,7 @@ class SiteController extends Controller
     {
         $query = Blog::find();
         $countQuery = clone $query;
-        $pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize' => 1]);
+        $pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize' => 9]);
         $articles = $query->offset($pages->offset)
             ->limit($pages->limit)
             ->all();
@@ -97,8 +99,42 @@ class SiteController extends Controller
     public function actionArticle($id)
     {
         $article = Blog::getArticleById($id);
+        $comments = Comment::getCommentByBlogId($id);
+        $model = new Comment();
 
+        if ($model->load(Yii::$app->request->post()) && $model->save() ) {
+            Yii::$app->session->setFlash('commentFormSubmitted');
+            return $this->refresh();
+        }
 
-        return $this->render('article', ['article' => $article]);
+        return $this->render('article', [
+            'article' => $article,
+            'model' => $model,
+            'comments' => $comments
+        ]);
+    }
+
+    public function actionTravels() {
+        $query = Travels::find();
+        $countQuery = clone $query;
+        $pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize' => 9]);
+        $articles = $query->offset($pages->offset)
+            ->limit($pages->limit)
+            ->all();
+
+        return $this->render('travels', [
+            'articles' => $articles,
+            'pages' => $pages,
+        ]);
+
+    }
+
+    public function actionTravel($id)
+    {
+        $article = Travels::findOne($id);
+
+        return $this->render('travel', [
+            'article' => $article,
+        ]);
     }
 }

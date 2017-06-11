@@ -18,12 +18,10 @@ $this->title = "Blog";
                 <div class="row">
                     <div class="blog-masonry masonry-true">
 
-                        <?php
-
-                        foreach ($articles as $article): ?>
+                        <?php foreach ($articles as $article): ?>
                         <div class="post-masonry col-md-4 col-sm-6">
                             <div class="blog-thumb">
-                                <img src="<?=Url::to("../images/blog/{$article->preview_image}", true)?>" alt="">
+                                <img src="<?=Url::to("../web/uploads/filemanager/source/{$article->preview_image}", true)?>" alt="">
                                 <div class="overlay-b">
                                     <div class="overlay-inner">
                                         <a href="<?=Yii::$app->getUrlManager()->createUrl(['site/article', 'id' => $article->id])?>" class="fa fa-link"></a>
@@ -34,8 +32,10 @@ $this->title = "Blog";
                                 <div class="box-content">
                                     <h3 class="post-title"><a href="<?=Yii::$app->getUrlManager()->createUrl(['site/article', 'id' => $article->id])?>"><?=$article->title?></a></h3>
                                     <span class="blog-meta"><?=$article->date?></span>
-                                    <a href="#"><?=\app\modules\admin\models\Blog::getAuthor($article->author_id)->username?></a>
-
+                                    <span style="float: right">Author: <a href="#"><?=\app\modules\admin\models\Blog::getAuthor($article->author_id)->username?></a></span>
+                                    <p>
+                                        <?= $article->short_description;?>
+                                    </p>
                                 </div>
                             </div>
                         </div> <!-- /.post-masonry -->

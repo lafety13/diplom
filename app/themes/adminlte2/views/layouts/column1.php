@@ -77,8 +77,8 @@ FontAsset::register($this);
                         <li class="<?=(Url::to() == Yii::$app->getHomeUrl() or Url::to() == '/site/index') ?  'active' :  ''?>">
                             <a href="<?=Yii::$app->getHomeUrl(); ?>">Home</a>
                         </li>
-                        <li>
-                            <a href="#">Booking</a>
+                        <li class="<?=(Url::to() == '/site/travels') ?  'active' :  ''?>">
+                            <a href="<?=Yii::$app->getUrlManager()->createUrl(['site/travels'])?>">Booking</a>
                         </li>
                         <li class="<?=(Url::to() == '/site/blog') ?  'active' :  ''?>">
                             <a href="<?=Yii::$app->getUrlManager()->createUrl(['site/blog'])?>">Blog</a>
