@@ -18,10 +18,16 @@ namespace app\modules\admin\models;
 
 use Yii;
 use yii\web\NotFoundHttpException;
+use yii\web\UploadedFile;
 
 class Blog extends \yii\db\ActiveRecord
 {
     private $module;
+
+    /**
+     * @var UploadedFile
+     */
+    public $imageFile;
 
     public function init()
     {
@@ -29,6 +35,7 @@ class Blog extends \yii\db\ActiveRecord
             $this->module = Yii::$app->getModule("user");
         }
     }
+
     /**
      * @inheritdoc
      */
@@ -44,10 +51,11 @@ class Blog extends \yii\db\ActiveRecord
     {
         return [
             [['title', 'short_description', 'text', 'author_id', 'date', 'preview_image', 'tags'], 'required'],
+            [['preview_image'], 'string'],
             [['text'], 'string'],
             [['author_id'], 'integer'],
             [['date'], 'safe'],
-            [['title', 'short_description', 'preview_image', 'tags'], 'string', 'max' => 255],
+            [['title', 'short_description', 'tags', 'preview_image'], 'string', 'max' => 255],
             [['author_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['author_id' => 'id']],
         ];
     }
@@ -100,5 +108,6 @@ class Blog extends \yii\db\ActiveRecord
         }
         return $article;
     }
+
 
 }
