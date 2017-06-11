@@ -29,7 +29,9 @@
       "kucha/ueditor": "*",
       "intervention/image": "^2.3",
       "voime/yii2-google-maps": "*",
-        "mihaildev/yii2-ckeditor": "*"
+        "mihaildev/yii2-ckeditor": "*",
+        "kartik-v/yii2-widget-fileinput": "@dev",
+        "xvs32x/tinymce-responsivefilemanager": "^1.0"
     },
     "require-dev": {
       "yiisoft/yii2-debug": "~2.0.0",

@@ -5,7 +5,7 @@ $config = [
         'request' => [
             'enableCsrfValidation' => true,
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => 'HjtUM2xd-xQ1yB91Syoweav40jW_r_zW',
+            'cookieValidationKey' => 's0dNZ09YUijZ5hOnnvJDy-FJ6N6dbUte',
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',

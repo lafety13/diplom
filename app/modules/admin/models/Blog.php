@@ -17,6 +17,7 @@
 namespace app\modules\admin\models;
 
 use Yii;
+use yii\web\NotFoundHttpException;
 
 class Blog extends \yii\db\ActiveRecord
 {
@@ -87,7 +88,17 @@ class Blog extends \yii\db\ActiveRecord
 
     public static function getAllArticles()
     {
-        return User::findOne(1);
+        return Blog::find()->all();
+    }
+
+    public static function getArticleById($id)
+    {
+        $article = Blog::findOne($id);
+
+        if (empty($article)) {
+            throw new NotFoundHttpException('Article not found');
+        }
+        return $article;
     }
 
 }
